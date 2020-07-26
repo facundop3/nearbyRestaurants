@@ -1,0 +1,32 @@
+.Restaurants-container {
+  width: 30%;
+  overflow: scroll;
+  padding: 1em;
+}
+
+.Restaurant-card {
+  border-radius: 4px;
+  margin-bottom: 1em;
+  box-shadow: -1px -1px 2px 0 rgba(0, 0, 0, 0.2),
+    -1px 4px 4px 0 rgba(0, 0, 0, 0.19);
+  padding: 0.5em 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Restaurant-logo {
+  border: 1px solid #e6e6e6;
+  width: 122px;
+  height: 122px;
+  border-radius: 6px;
+}
+
+.RestaurantInfo-container {
+  max-width: 300px;
+}
+
+.RestaurantInfo-container a {
+  text-decoration: inherit;
+  color: inherit;
+}

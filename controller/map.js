@@ -1,25 +1,30 @@
-const axios = require("axios");
+const PeyAPI = require("../api").PeyAPI;
 const queryString = require("querystring");
 
-const getRestaurants = ({
+const generateSearchParams = ({
   country = 1,
   point,
   max = 20,
-  fields = "name,ratingScore,logo,deliveryTimeMaxMinutes,link",
+  fields = "name,ratingScore,logo,deliveryTimeMaxMinutes,link,coordinates,opened",
 } = {}) => {
-  const baseUrl = "http://stg-api.pedidosya.com/public/v1/search/restaurants?";
-  const params = queryString.stringify({ country, point, max, fields });
-  return axios.get(baseUrl + params, {
-    headers: {
-      Authorization: "498-251638-24b3395e-e3b7-479d-4809-b7a54b7ff9be",
-    },
-  });
+  return (params = queryString.stringify({ country, point, max, fields }));
 };
 
-exports.getMap = async (req, res, next) => {
-  const { lat, lng } = req.query;
+exports.getRestaurants = async (req, res, next) => {
+  const Authorization = req.header("Authorization");
+  const { lat, lng, max, fields, country } = req.query;
+  const params = generateSearchParams({
+    point: `${lat},${lng}`,
+    max,
+    fields,
+    country,
+  });
   try {
-    const { data } = await getRestaurants({ point: `${lat},${lng}` });
+    const { data } = await PeyAPI.get("search/restaurants?" + params, {
+      headers: {
+        Authorization,
+      },
+    });
     res.send(data);
   } catch (err) {
     res.send(err);
