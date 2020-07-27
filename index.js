@@ -14,10 +14,6 @@ app.engine("html", mustache());
 app.set("views", "views");
 app.use(express.static(path.join(__dirname, "views", "client-app", "build")));
 app.use(bodyParser.json());
-app.get("/", (req, res) => {
-  res.send("hello there");
-});
-
 app.use(loginRoutes);
 app.use(mapRoutes);
 app.listen(PORT, () => {
