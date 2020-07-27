@@ -1,0 +1,14 @@
+.UI-MediaCard-logo {
+  border: 1px solid #e6e6e6;
+  width: 122px;
+  height: 122px;
+  border-radius: 6px;
+}
+
+.UI-MediaCard-Info-container {
+  max-width: 300px;
+}
+.UI-MediaCard-Info-container a {
+  text-decoration: inherit;
+  color: inherit;
+}

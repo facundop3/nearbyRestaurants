@@ -20,7 +20,7 @@ interface Props {
   urlCoords: Coords;
 }
 
-const MyComponent: FC<Props> = (props: any) => {
+const Map: FC<Props> = (props: any) => {
   const { user, restaurants, setRestaurants, urlCoords } = props;
   const [position, setPosition] = useState<Coords>(urlCoords);
   const handleMapClick = (ev: any) => {
@@ -67,4 +67,4 @@ const MyComponent: FC<Props> = (props: any) => {
   );
 };
 
-export default React.memo(MyComponent);
+export default React.memo(Map);

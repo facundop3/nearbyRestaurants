@@ -3,6 +3,7 @@ import { getUserAccessToken, setUserLocalStorage } from "../utils";
 import { Redirect } from "react-router-dom";
 import "./Login.css";
 import { User } from "../interfaces";
+import { Button, Input } from "./UI/index";
 const Login = ({ setUser, user }: { user: User | null; setUser: any }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,21 +35,19 @@ const Login = ({ setUser, user }: { user: User | null; setUser: any }) => {
     <form onSubmit={handleSubmit} className="Login-container">
       {hasError && <h2>Revisa los datos e intenta nuevamente</h2>}
       <h1>Encontrá los mejores restaurantes</h1>
-      <input
-        className="Login-input"
+      <Input
         placeholder="email"
         type="email"
         onChange={handleEmailChange}
         value={email}
       />
-      <input
-        className="Login-input"
+      <Input
         placeholder="password"
         type="password"
         onChange={handlePasswordChange}
         value={password}
       />
-      <button className="Login-button">Login</button>
+      <Button>Login</Button>
     </form>
   );
 };
