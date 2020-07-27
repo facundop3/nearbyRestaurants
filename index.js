@@ -6,7 +6,6 @@ const path = require("path");
 dotenv.config();
 const app = express();
 const loginRoutes = require("./routes/login");
-const userRoutes = require("./routes/user");
 const mapRoutes = require("./routes/map");
 
 const PORT = process.env.PORT || 3030;
@@ -20,7 +19,6 @@ app.get("/", (req, res) => {
 });
 
 app.use(loginRoutes);
-app.use(userRoutes);
 app.use(mapRoutes);
 app.listen(PORT, () => {
   console.log("listening on port: " + PORT);
