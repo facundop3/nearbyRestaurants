@@ -1,5 +1,6 @@
 const PeyAPI = require("../api").PeyAPI;
 const queryString = require("querystring");
+const adminData = require("../adminData");
 const NodeCache = require("node-cache");
 const myCache = new NodeCache();
 // Cache time in seconds
@@ -35,6 +36,7 @@ exports.getRestaurants = async (req, res, next) => {
         },
       });
       myCache.set(point, data, cacheTimeOut);
+      adminData.addSearch(point);
       res.send(data);
     } catch (err) {
       res.send(err);

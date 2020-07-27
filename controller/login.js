@@ -1,4 +1,5 @@
 const querystring = require("querystring");
+const adminData = require("../adminData");
 const PeyAPI = require("../api").PeyAPI;
 
 const getAuthorization = () => {
@@ -40,6 +41,7 @@ exports.postLogin = async (req, res, next) => {
       }
     );
     const { data } = await getUserByToken(userAccessToken);
+    adminData.addLogedInUser(data.name, data.lastName);
     res.send({ ...data, Authorization: userAccessToken });
   } catch (err) {
     console.log(err);

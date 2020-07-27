@@ -7,6 +7,7 @@ dotenv.config();
 const app = express();
 const loginRoutes = require("./routes/login");
 const mapRoutes = require("./routes/map");
+const adminRoutes = require("./routes/admin");
 
 const PORT = process.env.PORT || 3030;
 app.set("view engine", "html");
@@ -16,6 +17,7 @@ app.use(express.static(path.join(__dirname, "views", "client-app", "build")));
 app.use(bodyParser.json());
 app.use(loginRoutes);
 app.use(mapRoutes);
+app.use("/admin", adminRoutes);
 app.listen(PORT, () => {
   console.log("listening on port: " + PORT);
 });
