@@ -6,6 +6,7 @@ i18n
 Define propert types for the typescript frontend
 Improve UI
 When user hovers a restaurant from the list highlight the restaurant's marker on the map
+give it a try with next js (?)
 
 #### Config:
 

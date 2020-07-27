@@ -29,7 +29,6 @@ exports.getLogin = async (req, res, next) => {
 };
 
 exports.postLogin = async (req, res, next) => {
-  //TODO: delete this test_automation_000@pedidosya.com
   const { userName, password, Authorization } = req.body;
   try {
     const {

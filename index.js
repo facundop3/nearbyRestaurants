@@ -14,8 +14,6 @@ app.set("view engine", "html");
 app.engine("html", mustache());
 app.set("views", "views");
 app.use(express.static(path.join(__dirname, "views", "client-app", "build")));
-// TODO: check if not needed
-// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("hello there");
