@@ -1,12 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import "./Restaurants.css";
 import { getArrivingTime, getRestaurantPeYaLink } from "../utils";
-const Restaurants = (props: any) => {
-  const { restaurants } = props;
+import { Restaurant } from "../interfaces";
+
+interface Props {
+  restaurants: Restaurant[];
+}
+const Restaurants: FC<Props> = ({ restaurants }) => {
   return (
     <div className="Restaurants-container">
       {restaurants.map(
-        ({ name, ratingScore, deliveryTimeMaxMinutes, link, logo }: any) => (
+        ({ name, ratingScore, deliveryTimeMaxMinutes, link, logo }) => (
           <div className="Restaurant-card">
             <img
               className="Restaurant-logo"

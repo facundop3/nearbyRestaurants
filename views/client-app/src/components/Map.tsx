@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import {
   getUserPosition,
@@ -6,15 +6,23 @@ import {
   parseCoordinates,
   sortByratingScore,
 } from "../utils";
+import { Coords, User, Restaurant } from "../interfaces";
 
 const containerStyle = {
   width: "70%",
   height: "93vh",
 };
 
-function MyComponent(props: any) {
+interface Props {
+  user: User | null;
+  restaurants: Restaurant[];
+  setRestaurants: (r: Restaurant[]) => void;
+  urlCoords: Coords;
+}
+
+const MyComponent: FC<Props> = (props: any) => {
   const { user, restaurants, setRestaurants, urlCoords } = props;
-  const [position, setPosition] = useState(urlCoords);
+  const [position, setPosition] = useState<Coords>(urlCoords);
   const handleMapClick = (ev: any) => {
     const lat = ev.latLng.lat();
     const lng = ev.latLng.lng();
@@ -47,7 +55,7 @@ function MyComponent(props: any) {
       >
         {/* Child components, such as markers, info windows, etc. */}
         <>
-          {restaurants?.map(({ coordinates }: any) => {
+          {restaurants?.map(({ coordinates }: { coordinates: string }) => {
             return <Marker position={parseCoordinates(coordinates)} />;
           })}
           <Marker position={position} />
@@ -55,6 +63,6 @@ function MyComponent(props: any) {
       </GoogleMap>
     </LoadScript>
   );
-}
+};
 
 export default React.memo(MyComponent);

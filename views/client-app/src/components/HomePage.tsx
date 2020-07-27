@@ -5,11 +5,16 @@ import Map from "./Map";
 import Restaurants from "./Restaurants";
 import NavBar from "./NavBar";
 import "./HomePage.css";
+import { User, Restaurant } from "../interfaces";
 
-const HomePage = ({ user }: any) => {
-  const [restaurants, setRestaurants] = useState([]);
+const defaultCoords = {
+  lat: -34.9043524,
+  lng: -56.1690071,
+};
+const HomePage = ({ user }: { user: User | null }) => {
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const { search } = useLocation();
-  const [coords, setCoords] = useState({});
+  const [coords, setCoords] = useState(defaultCoords);
   useEffect(() => {
     const query = new URLSearchParams(search);
     const lat = Number(query.get("lat"));

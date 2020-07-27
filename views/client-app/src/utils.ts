@@ -1,4 +1,5 @@
 import axios from "axios";
+import { User, Coords } from "./interfaces";
 const localStorageKey = "peya_user_data";
 
 export const isValidEmail = (email: string): boolean =>
@@ -18,11 +19,11 @@ export const getUserAccessToken = (email: string, password: string) => {
   return Promise.reject("both fields are required");
 };
 
-export const getUserLocalStorage = () => {
+export const getUserLocalStorage = (): User | null => {
   return JSON.parse(window.localStorage.getItem(localStorageKey) || "null");
 };
 
-export const setUserLocalStorage = (user: object) => {
+export const setUserLocalStorage = (user: User) => {
   window.localStorage.setItem(localStorageKey, JSON.stringify(user));
 };
 
@@ -32,7 +33,7 @@ export const getUserPosition = () => {
   });
 };
 
-export const getRestaurants = (user: any, point: any) => {
+export const getRestaurants = (user: User, point: any) => {
   const { Authorization } = user;
   const params = new URLSearchParams(point).toString();
   return axios.get("http://localhost:3030/restaurants?" + params, {
@@ -40,13 +41,13 @@ export const getRestaurants = (user: any, point: any) => {
   });
 };
 
-export const parseCoordinates = (coordinates: string) => {
+export const parseCoordinates = (coordinates: string): Coords => {
   const [lat, lng] = coordinates.split(",").map(Number);
   return { lat, lng };
 };
 
-export const getArrivingTime = (maxDeliveryMinutes: number) => {
-  const maxDeliveryMiliseconds = maxDeliveryMinutes * 60000;
+export const getArrivingTime = (maxDeliveryMinutes: string) => {
+  const maxDeliveryMiliseconds = Number(maxDeliveryMinutes) * 60000;
   const currentDate = new Date();
   const arrivingDate = new Date(currentDate.getTime() + maxDeliveryMiliseconds);
   return `${arrivingDate.getHours()}:${arrivingDate.getMinutes()}`;

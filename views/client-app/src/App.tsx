@@ -6,10 +6,11 @@ import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import HomePage from "./components/HomePage";
 import { getUserLocalStorage } from "./utils";
+import { User } from "./interfaces";
 
 function App() {
   const storedUser = getUserLocalStorage();
-  const [user, setUser] = useState(storedUser);
+  const [user, setUser] = useState<User | null>(storedUser);
   return (
     <Router>
       <Route path="/login">

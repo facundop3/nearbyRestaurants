@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { getUserAccessToken, setUserLocalStorage } from "../utils";
 import { Redirect } from "react-router-dom";
 import "./Login.css";
-const Login = ({ setUser, user }: any) => {
+import { User } from "../interfaces";
+const Login = ({ setUser, user }: { user: User | null; setUser: any }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hasError, setHasError] = useState(false);

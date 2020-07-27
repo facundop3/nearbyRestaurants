@@ -1,9 +1,8 @@
 import React from "react";
 import "./NavBar.css";
-const NavBar = (props: any) => {
-  const {
-    user: { name },
-  } = props;
+import { User } from "../interfaces";
+const NavBar = (props: { user: User | null }) => {
+  const name = props.user?.name;
   return <div className="NavBar-container">{name && <h1>{name}</h1>}</div>;
 };
 
