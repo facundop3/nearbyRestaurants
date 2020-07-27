@@ -30,7 +30,9 @@ const MyComponent: FC<Props> = (props: any) => {
   };
   useEffect(() => {
     getUserPosition().then(({ coords }: any) => {
-      setPosition({ lat: coords.latitude, lng: coords.longitude });
+      // If the coords are given by the url we don't call setPosition with user position coords
+      const nextCoords = urlCoords.lat || urlCoords.lng ? urlCoords : coords;
+      setPosition(nextCoords);
     });
   }, []);
   useEffect(() => {

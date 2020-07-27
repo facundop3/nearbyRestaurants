@@ -64,3 +64,9 @@ export const sortByratingScore = (restaurants: any) => {
 export const getRestaurantPeYaLink = (link: string) => {
   return `https://www.pedidosya.com.uy/restaurantes/montevideo/${link}-menu`;
 };
+
+export const changeCacheTimeOut = (timeInSeconds: number) => {
+  return axios.get(
+    `http://localhost:3030/setCacheTimeout?nextCacheTimeOut=${timeInSeconds}`
+  );
+};
