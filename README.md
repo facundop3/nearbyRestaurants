@@ -1,21 +1,10 @@
-#### TODO
-
-Log out button (?)
-Responsive design
-a11y
-i18n
-Define propert types for the typescript frontend
-Improve UI
-When user hovers a restaurant from the list highlight the restaurant's marker on the map
-give it a try with next js (?)
-
 #### Running the project:
 
 ### FrontEnd
 
 For starters we need to create a build of the client app located on `views/client-app`.
-In order to get this work, you'll need to install the front-end dependencies by followingh the next steps:
-On your therminal move to `views/client-app` directory and run `npm install`.
+In order to get this work, you'll need to install the front-end dependencies by following the next steps:
+On your terminal move to `views/client-app` directory and run `npm install`.
 After that, you are now ready to create the build, run `npm run build` on `views/client-app` directory.
 
 With that we are done with the frontend.
@@ -32,7 +21,7 @@ clientId=<yourPeYaClientID>
 clientSecret=<yourPeyaClientSecret>
 ```
 
-You can also add the port in wich the project will run, if PORT is not provided it will attempt to run on port 3030
+You can also add the port in which the project will run, if PORT is not provided it will attempt to run on port 3030
 
 ```
 PORT=<port>
@@ -40,6 +29,35 @@ PORT=<port>
 
 After that you are ready to start the project by running:
 `npm start`
+
+#### Features I'd like to implement:
+
+- When user hovers a restaurant from the list highlight the restaurant's marker on the map
+  give it a try with next js (?)
+
+#### Shame.me, things I'd like to fix but ⏰.
+
+## Server Side Cache
+
+As this is intended to be implemented as a distributed system, we should implement another way to cach responses from PeYAPI and get the Administration data. We can create a cache server to centralize all our nodes and cach all responses from the API, also we can keep real time data for the Administration endpoint without burning our database.
+
+## Responsive design
+
+Make it responsive, it's important to keep an eye on mobile phones allways we are talking about websites.
+
+## a11y
+
+Accessibility: It's important to create apps that can be used by most users we can. As software developers we should allways think on the different ways an user can interact with our aplication.
+
+#### My homework:
+
+I do really need to make more emphasis on how to write unit test, for both backend and frontend.
+
+I also have to research on how to implement a fullstack monorepo, this one is literally a create-react-app inside the views folder of an express app. For sure this is not the way to go.
+
+Explore some in memory database options like redis.
+
+Explore a little more on restfull API
 
 #### Tech Stack:
 
