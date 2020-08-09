@@ -1,19 +1,16 @@
 #### Running the project:
 
-### FrontEnd
+### First step: Install dependencies:
 
-For starters we need to create a build of the client app located on `views/client-app`.
-In order to get this work, you'll need to install the front-end dependencies by following the next steps:
-On your terminal move to `views/client-app` directory and run `npm install`.
-After that, you are now ready to create the build, run `npm run build` on `views/client-app` directory.
+Run `npm install` on the root folder of this repo.
 
-With that we are done with the frontend.
+### Create the FrontEnd build
 
-### Backend
+For starters we need to create a build of the client app, run `npm run build` on the root directory of this repo.
 
-To run the backend you will need to install the backend's dependencies, run `npm install` on the root folder of this repo.
+### Run the server
 
-You will also need to create a file with the name ".env" at the root folder of this repo.
+You will need to create a file with the name ".env" at the root folder of this repo.
 It must include the following content:
 
 ```
@@ -52,8 +49,6 @@ Accessibility: It's important to create apps that can be used by most users we c
 #### My homework:
 
 I do really need to make more emphasis on how to write unit test, for both backend and frontend.
-
-I also have to research on how to implement a fullstack monorepo, this one is literally a create-react-app inside the views folder of an express app. For sure this is not the way to go.
 
 Explore some in memory database options like redis.
 

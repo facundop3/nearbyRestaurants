@@ -22,7 +22,7 @@ exports.getLogin = async (req, res, next) => {
     const {
       data: { access_token: client_access_token },
     } = await getAuthorization();
-    res.render("client-app/build", { client_access_token });
+    res.render("index.html", { client_access_token });
   } catch (err) {
     console.log(err);
     res.send(err);
